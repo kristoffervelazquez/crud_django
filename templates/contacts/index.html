@@ -1,0 +1,51 @@
+<!-- templates/contacts/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Contactos{% endblock %}
+
+{% block content %}
+<h1 class="mt-4">Administrador de contactos</h1>
+<form method="GET" action="{% url 'index' %}" class="form-inline mb-3">
+    <input type="text" name="q" class="form-control mr-sm-2" placeholder="Buscar por nombre" value="{{ query }}">
+    <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
+</form>
+<a href="{% url 'add_contact' %}" class="btn btn-primary mb-3">Agregar contacto</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>
+                    {% if contact.image %}
+                        <img src="{{ contact.image.url }}" class="img-thumbnail" style="max-width: 100px;">
+                    {% else %}
+                        No image
+                    {% endif %}
+                </td>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.city }}</td>
+                <td>
+                    <a href="{% url 'edit_contact' contact.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'delete_contact' contact.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
