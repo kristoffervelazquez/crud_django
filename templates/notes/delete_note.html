@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title><!-- templates/notes/delete_note.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Eliminar nota</title>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <title>Eliminar nota</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -16,9 +16,9 @@
     <p>Estas seguro que deseas eliminar la nota: {{ note.id }}?</p>
     <form method="post">
         {% csrf_token %}
+        <a href="{% url 'notes:index' %}" class="btn btn-secondary">Atras</a>
         <button type="submit" class="btn btn-danger">Si, eliminar</button>
     </form>
-    <a href="{% url 'notes:index' %}" class="btn btn-secondary mt-3">Atras</a>
 </div>
 </body>
 </html>

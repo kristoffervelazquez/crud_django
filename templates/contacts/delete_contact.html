@@ -4,11 +4,11 @@
 {% block title %}Eliminar Contacto{% endblock %}
 
 {% block content %}
-<h1 class="mt-4">Eliminar Contacto</h1>
-<p>Estas seguro que deseas eliminar a {{ contact.name }}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Si, eliminar</button>
-</form>
-<a href="{% url 'index' %}" class="btn btn-secondary">Atras</a>
+    <h1 class="mt-4">Eliminar Contacto</h1>
+    <p>Estas seguro que deseas eliminar a {{ contact.name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <a href="{% url 'index' %}" class="btn btn-secondary">Atras</a>
+        <button type="submit" class="btn btn-danger">Si, eliminar</button>
+    </form>
 {% endblock %}
