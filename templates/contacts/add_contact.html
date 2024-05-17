@@ -4,11 +4,11 @@
 {% block title %}Añadir contacto{% endblock %}
 
 {% block content %}
-<h1 class="mt-4">Agregar contacto</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Add</button>
-</form>
-<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Back</a>
+    <h1 class="mt-4">Agregar contacto</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'index' %}" class="btn btn-secondary">Atras</a>
+        <button type="submit" class="btn btn-success">Agregar</button>
+    </form>
 {% endblock %}

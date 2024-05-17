@@ -1,0 +1,20 @@
+<!-- templates/companies/edit_company.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar compañia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Editar compañia</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guarda</button>
+    </form>
+    <a href="{% url 'companies:index' %}" class="btn btn-secondary">Atras</a>
+</div>
+</body>
+</html>

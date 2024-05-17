@@ -1,0 +1,41 @@
+<!-- templates/events/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Eventos</h1>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary mb-3">Inicio</a>
+    <a href="{% url 'events:add_event' %}" class="btn btn-primary mb-3">Agregar Evento</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Contacto</th>
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.contact.name }}</td>
+                <td>{{ event.title }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.date }}</td>
+                <td>
+                    <a href="{% url 'events:edit_event' event.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'events:delete_event' event.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

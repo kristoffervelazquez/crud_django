@@ -1,0 +1,41 @@
+<!-- templates/companies/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compáñias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Compañias</h1>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Inicio</a>
+    <a href="{% url 'companies:add_company' %}" class="btn btn-primary">Agregar compañia</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.address }}</td>
+                <td>{{ company.phone }}</td>
+                <td>{{ company.email }}</td>
+                <td>
+                    <a href="{% url 'companies:edit_company' company.pk %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'companies:delete_company' company.pk %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

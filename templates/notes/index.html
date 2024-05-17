@@ -1,0 +1,39 @@
+<!-- templates/notes/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Notas</h1>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary mb-3">Inicio</a>
+    <a href="{% url 'notes:add_note' %}" class="btn btn-primary mb-3">Agregar Nota</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Contacto</th>
+            <th>Nota</th>
+            <th>Fecha de creación</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note.contact.name }}</td>
+                <td>{{ note.note }}</td>
+                <td>{{ note.created_at }}</td>
+                <td>
+                    <a href="{% url 'notes:edit_note' note.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'notes:delete_note' note.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
