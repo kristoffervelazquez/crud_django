@@ -12,9 +12,9 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <a href="{% url 'companies:index' %}" class="btn btn-secondary">Atras</a>
         <button type="submit" class="btn btn-success">Agregar</button>
     </form>
-    <a href="{% url 'companies:index' %}" class="btn btn-secondary">Atras</a>
 </div>
 </body>
 </html>
