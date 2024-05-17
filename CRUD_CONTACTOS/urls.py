@@ -18,8 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+def redirect_to_dashboard(request):
+    from django.shortcuts import redirect
+    return redirect('dashboard/')
 
 urlpatterns = [
+    path('', redirect_to_dashboard),
     path('admin/', admin.site.urls),
     path('auth/', include('django.contrib.auth.urls')),
     path('dashboard/', include('dashboard.urls')),
@@ -27,8 +31,8 @@ urlpatterns = [
     path('companies/', include('companies.urls')),
     path('notes/', include('notes.urls')),
     path('events/', include('events.urls')),
-
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
